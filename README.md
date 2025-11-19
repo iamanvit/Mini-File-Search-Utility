@@ -10,31 +10,30 @@ The Mini File Search Utility is a Unix-based shell script designed to quickly lo
 ---
 
 # 🎯 **Project Objectives**
-- Develop a functional Unix shell script to search files efficiently.
-- Implement support for name-based and extension-based searching.
-- Include optional file-size-based filtering.
-- Demonstrate usage of essential Unix commands like `find`.
-- Provide clear and testable outputs for validation.
+- Build a fast and reliable Unix-based file searching tool.
+- Enable search by **file name**, **extension**, and **size filters**.
+- Demonstrate use of essential Unix commands.
+- Produce clean, readable search results.
 
 ---
 
 # ⚙️ **Key Functionalities**
-- 🔍 Search files by **keyword in name**.
-- 📝 Search by **file extension**.
-- 📏 Filter results by **file size** (e.g., `+100k`, `-1M`).
-- 📂 Searches inside subdirectories as well.
-- 🖥️ Case-insensitive search for broader matching.
+- 🔍 Search files by **keyword in filename**
+- 📝 Search using **file extension**
+- 📏 Filter results by **file size** (e.g., `+100k`, `-1M`)
+- 📂 Recursively searches subdirectories
+- 🖥️ Case-insensitive search for better matching
 
 ---
 
 # 🧩 **Core Commands Used**
 | Command | Purpose |
 |--------|---------|
-| `find` | Locate files with conditions like size, name, extension |
-| `echo` | Display output messages to the user |
-| `dd` | Create large mock files for testing |
-| `chmod` | Make the script executable |
-| `ls` | Verify and inspect created files |
+| `find` | Perform file search based on name, extension, size |
+| `echo` | Display output messages |
+| `dd` | Create test files of specific sizes |
+| `chmod` | Make script executable |
+| `ls` | View and verify files |
 
 ---
 
@@ -43,15 +42,30 @@ The Mini File Search Utility is a Unix-based shell script designed to quickly lo
 📦 Mini-File-Search-Utility
  ┣ 📜 search.sh
  ┣ 📄 output.txt
+ ┣ 📁 testfiles/
  ┗ 📘 README.md
 ```
 
 ---
 
 # 📤 **Example Output**
-Below is the example output captured during script execution:
+Below is the actual terminal output captured during script execution:
 
-![Example Output](output.png)
+```
+Searching in directory: .
+Keyword: txt
+./notes.txt
+./report.txt
+./hello.txt
+./report1.txt
+./report2.txt
+
+Searching in directory: .  
+Keyword: report  
+./report.txt  
+./report1.txt  
+./report2.txt  
+```
 
 ---
 
@@ -60,7 +74,8 @@ Below is the example output captured during script execution:
 ```bash
 chmod +x search.sh
 ```
-2. Run the script:
+
+2. Execute the script:
 ```bash
 ./search.sh <directory> <name/extension> [size]
 ```
@@ -68,7 +83,7 @@ chmod +x search.sh
 ---
 
 # 🧪 **Testing With Sample Files**
-Create mock files for testing:
+Create mock files:
 ```bash
 touch notes.txt report.txt hello.txt
 mkdir logs reports
@@ -76,7 +91,7 @@ echo "sample" > report1.txt
 dd if=/dev/zero of=bigfile.log bs=1k count=150
 ```
 
-Run tests:
+Run searches:
 ```bash
 ./search.sh . txt
 ./search.sh . report
@@ -86,11 +101,11 @@ Run tests:
 ---
 
 # 📈 **Future Enhancements**
-- Add color-coded output for better readability.
-- Include option to export results to a text file automatically.
-- Add interactive mode (menu-driven search choices).
-- Display total number of matching files.
-- Enable regex-based pattern searching.
+- Add color-coded output for easier visibility  
+- Option to save results to a file automatically  
+- Interactive (menu-driven) mode  
+- Show total count of matched files  
+- Add support for regex pattern searching  
 
 ---
 
